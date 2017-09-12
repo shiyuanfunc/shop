@@ -25,13 +25,13 @@ public class ManagerController {
 
     @RequestMapping("/upload")
     public @ResponseBody
-    Map<String,Object> uploadPhoto(@RequestParam("photoFile")MultipartFile file) throws Exception{
-        /*HttpServletRequest request = RequestUtils.getHttpServletRequest();
-        Map<String, Object> sendMap = RequestParameterUtils.getParameter(request);
-        String realPath = request.getSession().getServletContext().getRealPath("/upload");
+    Map<String,Object> uploadPhoto(@RequestParam("photoFile") MultipartFile file) throws Exception{
         UUID uuid = UUID.randomUUID();
         String fileName = file.getOriginalFilename();
         String newFileName = uuid.toString().replace("-","")+fileName.substring(fileName.lastIndexOf("."));
+        /*HttpServletRequest request = RequestUtils.getHttpServletRequest();
+        Map<String, Object> sendMap = RequestParameterUtils.getParameter(request);
+        String realPath = request.getSession().getServletContext().getRealPath("/upload");
         sendMap.put("realPath", realPath);
         sendMap.put("newFileName",newFileName);
         //Map<String, Object> map = goodsService.saveGoods(sendMap);
