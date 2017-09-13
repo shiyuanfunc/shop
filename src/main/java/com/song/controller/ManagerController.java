@@ -1,5 +1,6 @@
 package com.song.controller;
 
+import com.song.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import java.util.*;
 public class ManagerController {
 
     @Autowired
-    //private GoodsService goodsService;
+    private GoodsService goodsService;
 
 
     @RequestMapping("/upload")
