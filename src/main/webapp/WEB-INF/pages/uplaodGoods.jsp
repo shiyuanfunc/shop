@@ -30,7 +30,7 @@
     <form id="ff" method="post" >
         <div class="lb">
             <label>商品名称</label>
-            <input name="goodsName" class="easyui-textbox" data-options="iconCls:'icon-search',prompt:'请输入商品名称',height:25" style="width:200px" >
+            <input name="goodName" class="easyui-textbox" data-options="iconCls:'icon-search',prompt:'请输入商品名称',height:25" style="width:200px" >
         </div>
         <div>
             <label>商品图片</label>
@@ -38,16 +38,16 @@
         </div>
         <div>
             <label>商品价格</label>
-            <input type="text" id="nn" name="price" style="width:200px">
+            <input type="text" id="nn" name="goodPrice" style="width:200px">
         </div>
         <div>
             <label>商品描述</label>
-            <input class="easyui-textbox" name="desc" data-options="iconCls:'icon-search'" style="width:200px">
+            <input class="easyui-textbox" name="goodDesc" data-options="iconCls:'icon-search'" style="width:200px">
         </div>
         <div>
             <label>商品类别</label>
-            <select id="cc" class="easyui-combobox" name="dept" style="width:200px;"
-                    data-options="valueField:'id',textField:'text',url:'${pageContext.request.contextPath}/manager/combobox'">
+            <select id="cc" class="easyui-combobox" name="goodType" style="width:200px;"
+                    data-options="valueField:'id',textField:'text',url:'${pageContext.request.contextPath}/managerr/combobox'">
             </select>
         </div>
         <div>
@@ -77,7 +77,7 @@
                     var formData = new FormData($("#ff")[0]);
                     //提交表单
                     $.ajax({
-                        url: '${pageContext.request.contextPath}/manager/upload',
+                        url: '${pageContext.request.contextPath}/managerr/upload',
                         type:'post',
                         data:formData,
                         contentType: false,
