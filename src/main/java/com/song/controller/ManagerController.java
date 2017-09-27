@@ -31,7 +31,7 @@ public class ManagerController {
       */
     @RequestMapping("/upload")
     public @ResponseBody
-    Map<String,Object> uploadPhoto(@RequestParam("photoFile") MultipartFile file , Goods goods) throws Exception{
+    Map<String,Object> uploadPhoto(@RequestParam("photoFile") MultipartFile file , Goods goods , HttpServletRequest request) throws Exception{
         String fileName = file.getOriginalFilename();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String newFileName = simpleDateFormat.format(new Date());
@@ -44,7 +44,7 @@ public class ManagerController {
         Map<String,Object> map = new HashMap<>();
         map.put("file",file);
         map.put("entity",goods);
-        Map<String, Object> rtMap = goodsService.saveGoods(map);
+        Map<String, Object> rtMap = goodsService.saveGoods(map,request);
         return null;
     }
 
