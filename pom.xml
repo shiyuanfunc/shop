@@ -177,6 +177,11 @@
           <artifactId>spring-webmvc</artifactId>
           <version>4.0.2.RELEASE</version>
       </dependency>
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi</artifactId>
+          <version>3.9</version>
+      </dependency>
   </dependencies>
   <build>
     <finalName>shop</finalName>
