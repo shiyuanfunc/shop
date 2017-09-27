@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -45,7 +48,13 @@ public class ManagerController {
         map.put("file",file);
         map.put("entity",goods);
         Map<String, Object> rtMap = goodsService.saveGoods(map,request);
-        return null;
+        if ("success".equals(String.valueOf(rtMap.get("status")))){
+            return rtMap;
+        }else {
+            rtMap.put("status","error");
+            rtMap.put("msg","上传失败");
+            return rtMap;
+        }
     }
 
     @RequestMapping("/combobox")
@@ -62,5 +71,27 @@ public class ManagerController {
         map2.put("text","电器");
         list.add(map2);
         return list;
+    }
+
+    /**
+     *  生成验证码
+     * @param response
+     * @param request
+     */
+    @RequestMapping(value="getGifCode",method= RequestMethod.GET)
+    public void getGifCode(HttpServletResponse response,HttpServletRequest request) {
+        try {
+            response.setHeader("Pragma", "No-cache");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setDateHeader("Expires", 0);
+            response.setContentType("image/gif");
+            /**
+             * gif格式动画验证码
+             * 宽，高，位数。
+             */
+
+        }catch(Exception e){
+
+        }
     }
 }

@@ -3,6 +3,7 @@
 <head>
     <title>商品上传</title>
     <jsp:include page="/common/headEasyUI.jsp"></jsp:include>
+    <script src="${pageContext.request.contextPath}/js/gVerify.js"></script>
 </head>
 <style rel="stylesheet" type="text/css">
     div{
@@ -51,12 +52,30 @@
             </select>
         </div>
         <div>
+            <div id="v_container" style="width: 200px;height: 50px;position: absolute"></div>
+            <input type="text" id="code_input" value="" placeholder="请输入验证码"/><button id="my_button">验证</button>
+        </div>
+        <div>
             <a id="reset" href="#" _value="reset" class="easyui-linkbutton" data-options="" style="width: 50px">重置</a>
             <a id="sub" href="#" _value = "submit" class="easyui-linkbutton" data-options="" style="width: 50px">提交</a>
         </div>
     </form>
 </div>
+
+
 <script>
+    var verifyCode = new GVerify("v_container");
+    document.getElementById("my_button").onclick = function(){
+        var res = verifyCode.validate(document.getElementById("code_input").value);
+        if(res){
+            alert("验证正确");
+        }else{
+            alert("验证码错误");
+        }
+    }
+</script>
+<script>
+
     $(function(){
         $('#nn').numberbox({
             min:0,
@@ -85,10 +104,10 @@
                         processData: false,
                         success:function(data){
                             $.messager.progress('close');
-                            alert(1);
+                            alert(data.msg);
                         },error:function(){
                             $.messager.progress('close');
-                            alert(2);
+                            alert("系统错误");
                         }
                     });
                 }
