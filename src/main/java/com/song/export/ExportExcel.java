@@ -17,16 +17,16 @@ public class ExportExcel extends AbstractExcelView {
     @Override
     protected void buildExcelDocument(Map<String, Object> map, HSSFWorkbook workbook,
                                       HttpServletRequest httpServletRequest, HttpServletResponse response) throws Exception {
-        String excelName = "ÓÃ»§ĞÅÏ¢.xls";
-        // ÉèÖÃresponse·½Ê½,Ê¹Ö´ĞĞ´ËcontrollerÊ±ºò×Ô¶¯³öÏÖÏÂÔØÒ³Ãæ,¶ø·ÇÖ±½ÓÊ¹ÓÃexcel´ò¿ª
+        String excelName = "ç”¨æˆ·ä¿¡æ¯.xls";
+        // è®¾ç½®responseæ–¹å¼,ä½¿æ‰§è¡Œæ­¤controlleræ—¶å€™è‡ªåŠ¨å‡ºç°ä¸‹è½½é¡µé¢,è€Œéç›´æ¥ä½¿ç”¨excelæ‰“å¼€
         response.setContentType("APPLICATION/OCTET-STREAM");
         response.setHeader("Content-Disposition", "attachment; filename="+ URLEncoder.encode(excelName, "UTF-8"));
 
         List stuList = (List) map.get("list");
-        // ²úÉúExcel±íÍ·
+        // äº§ç”ŸExcelè¡¨å¤´
         HSSFSheet sheet = workbook.createSheet("studentList");
-        HSSFRow header = sheet.createRow(0); // µÚ0ĞĞ
-        // ²úÉú±êÌâÁĞ
+        HSSFRow header = sheet.createRow(0); // ç¬¬0è¡Œ
+        // äº§ç”Ÿæ ‡é¢˜åˆ—
         header.createCell((short) 0).setCellValue("name");
         header.createCell((short) 1).setCellValue("sex");
         header.createCell((short) 2).setCellValue("date");
@@ -34,7 +34,7 @@ public class ExportExcel extends AbstractExcelView {
         HSSFCellStyle cellStyle = workbook.createCellStyle();
         cellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("mm/dd/yyyy"));
 
-        // Ìî³äÊı¾İ
+        // å¡«å……æ•°æ®
         int rowNum = 1;
         for (Iterator iter = stuList.iterator(); iter.hasNext();) {
             //Student element = (Student) iter.next();
@@ -48,10 +48,10 @@ public class ExportExcel extends AbstractExcelView {
             row.createCell((short) 3).setCellValue(element.getCount());*/
         }
 
-        // ÁĞ×ÜºÍ¼ÆËã
+        // åˆ—æ€»å’Œè®¡ç®—
         HSSFRow row = sheet.createRow(rowNum);
         row.createCell((short) 0).setCellValue("TOTAL:");
-        String formual = "SUM(D2:D" + rowNum + ")"; // D2µ½D[rowNum]µ¥Ôª¸ñÆğ(countÊı¾İ)
+        String formual = "SUM(D2:D" + rowNum + ")"; // D2åˆ°D[rowNum]å•å…ƒæ ¼èµ·(countæ•°æ®)
         row.createCell((short) 3).setCellFormula(formual);
     }
 }
