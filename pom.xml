@@ -165,6 +165,18 @@
           <artifactId>shiro-spring</artifactId>
           <version>1.2.1</version>
       </dependency>
+
+      <!-- 处理Excel -->
+      <dependency>
+          <groupId>org.jxls</groupId>
+          <artifactId>jxls-jexcel</artifactId>
+          <version>1.0.6</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>4.0.2.RELEASE</version>
+      </dependency>
   </dependencies>
   <build>
     <finalName>shop</finalName>

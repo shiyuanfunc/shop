@@ -2,8 +2,13 @@ package com.song.controller;
 
 import com.song.bean.Goods;
 import com.song.service.GoodsService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -57,6 +63,11 @@ public class ManagerController {
         }
     }
 
+    /**
+     *   加载商品类别 ajax
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/combobox")
     public @ResponseBody
     List<Map<String,Object>> combobox()throws Exception{
@@ -72,6 +83,30 @@ public class ManagerController {
         list.add(map2);
         return list;
     }
+
+    /**
+     *
+     *  文件下载
+     * @return
+     * @throws Exception
+     */
+    //@RequestMapping("/downlaod")
+    public ResponseEntity<byte[]> downloadGods() throws Exception{
+        String path = "";
+        File file = new File(path);
+        String fileName = new String("你好.xml".getBytes("utf-8"),"iso-8859-1");
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentDispositionFormData("attachment", fileName);
+        httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        return  new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+                httpHeaders, HttpStatus.CREATED);
+    }
+
+
+    /**
+     *  导出商品  表格
+     */
+
 
     /**
      *  生成验证码
