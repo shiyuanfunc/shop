@@ -1,6 +1,8 @@
 package com.song.controller;
 
 import com.song.service.GoodsService;
+import com.song.utils.RequestParameterUtils;
+import com.song.utils.RequestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
@@ -30,13 +33,13 @@ public class ManagerController {
         UUID uuid = UUID.randomUUID();
         String fileName = file.getOriginalFilename();
         String newFileName = uuid.toString().replace("-","")+fileName.substring(fileName.lastIndexOf("."));
-        /*HttpServletRequest request = RequestUtils.getHttpServletRequest();
+        HttpServletRequest request = RequestUtils.getHttpServletRequest();
         Map<String, Object> sendMap = RequestParameterUtils.getParameter(request);
         String realPath = request.getSession().getServletContext().getRealPath("/upload");
         sendMap.put("realPath", realPath);
         sendMap.put("newFileName",newFileName);
-        //Map<String, Object> map = goodsService.saveGoods(sendMap);
-        //return map;*/
+        Map<String, Object> map = goodsService.saveGoods(sendMap);
+        //return map;
         return null;
     }
 
