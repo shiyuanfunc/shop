@@ -107,6 +107,10 @@ public class ManagerController {
      *  导出商品  表格
      */
 
+    public String export() throws Exception{
+
+        return "";
+    }
 
     /**
      *  生成验证码

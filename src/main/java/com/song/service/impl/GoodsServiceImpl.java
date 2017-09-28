@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,5 +50,17 @@ public class GoodsServiceImpl implements GoodsService{
         rtMap.put("status","success");
         rtMap.put("msg","上传成功");
         return rtMap;
+    }
+
+    /**
+     *  查询前台所需要的数据
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<Map<String, Object>> queryGoods() throws Exception {
+
+        
+        return null;
     }
 }
