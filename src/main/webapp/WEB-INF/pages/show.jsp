@@ -7,18 +7,18 @@
 <body>
 <div id="cc" class="easyui-layout" style="width:100%;height:100%;">
     <div data-options="region:'north',title:'北',split:true,collapsible:true,minimizable:true"
-         style="height:150px; color: red">
+         style="height:150px; color: red ; background: url('/img/login_bg_2.jpg')">
         <div>
             后台管理
         </div>
     </div>
     <div data-options="region:'west',title:'导航菜单',split:true, collapsible:true" style="width:150px;">
         <div id="aa" class="easyui-accordion" style="width:100%;height:90%;">
-            <div title="商品信息管理" data-options="iconCls:'icon-save',selected:true" style="overflow:auto;padding:0px;">
+            <div title="需求管理" data-options="iconCls:'icon-save',selected:true" style="overflow:auto;padding:0px;">
                 <a class="easyui-linkbutton" _href="view/uplaodGoods" data-options="iconCls:'icon-man'"
-                   style="width: 100%">上传商品图片</a>
+                   style="width: 100%">新建需求</a>
                 <a class="easyui-linkbutton" _href="${mapp.URL}" data-options="iconCls:'icon-man'"
-                   style="width: 100%">删除商品图片</a>
+                   style="width: 100%">浏览需求</a>
                 <a class="easyui-linkbutton" _href="view/display" data-options="iconCls:'icon-man'"
                    style="width: 100%">浏览商品信息</a>
                 <a class="easyui-linkbutton" _href="${mapp.URL}" data-options="iconCls:'icon-man'"

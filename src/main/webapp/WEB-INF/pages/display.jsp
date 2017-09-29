@@ -3,6 +3,7 @@
 <head>
     <title>浏览商品</title>
     <jsp:include page="/common/headEasyUI.jsp"></jsp:include>
+
 </head>
 <body>
 <table class="easyui-datagrid" style="width:100%;height:100%"
