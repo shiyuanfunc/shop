@@ -8,11 +8,19 @@ import java.util.Map;
  */
 public interface GoodsService  {
 
+    /**
+     *   保存商品
+     * @param map
+     * @param request
+     * @return
+     * @throws Exception
+     */
     Map<String,Object> saveGoods(Map<String,Object> map,HttpServletRequest request) throws Exception;
 
     /**
-     *  查讯 页面应该显示的内容
+     *  查询商品
+     * @return
+     * @throws Exception
      */
-
-    List<Map<String,Object>> queryGoods() throws Exception;
+    public List<Map<String, Object>> queryGoods() throws Exception;
 }

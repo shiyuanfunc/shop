@@ -1,26 +1,17 @@
 package com.song.controller;
 
-import com.song.bean.Goods;
 import com.song.service.GoodsService;
-import org.apache.commons.io.FileUtils;
+import com.song.utils.RequestParameterUtils;
+import com.song.utils.RequestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -35,43 +26,26 @@ public class ManagerController {
     @Autowired
     private GoodsService goodsService;
 
-    /**
-     *  上传商品图片信息
-      */
+
     @RequestMapping("/upload")
     public @ResponseBody
-    Map<String,Object> uploadPhoto(@RequestParam("photoFile") MultipartFile file , Goods goods , HttpServletRequest request) throws Exception{
+    Map<String,Object> uploadPhoto(@RequestParam("photoFile") MultipartFile file ) throws Exception{
+        UUID uuid = UUID.randomUUID();
         String fileName = file.getOriginalFilename();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        String newFileName = simpleDateFormat.format(new Date());
-        for(int i =0 ; i < 3 ; i++){
-            Random random = new Random();
-            int i1 = random.nextInt(9);
-            newFileName+=i1;
-        }
-        goods.setGoodName(newFileName);
-        Map<String,Object> map = new HashMap<>();
-        map.put("file",file);
-        map.put("entity",goods);
-        Map<String, Object> rtMap = goodsService.saveGoods(map,request);
-        if ("success".equals(String.valueOf(rtMap.get("status")))){
-            return rtMap;
-        }else {
-            rtMap.put("status","error");
-            rtMap.put("msg","上传失败");
-            return rtMap;
-        }
+        String newFileName = uuid.toString().replace("-","")+fileName.substring(fileName.lastIndexOf("."));
+        HttpServletRequest request = RequestUtils.getHttpServletRequest();
+        Map<String, Object> sendMap = RequestParameterUtils.getParameter(request);
+        String realPath = request.getSession().getServletContext().getRealPath("/upload");
+        sendMap.put("realPath", realPath);
+        sendMap.put("newFileName",newFileName);
+        Map<String, Object> map = goodsService.saveGoods(sendMap , request);
+        //return map;
+        return null;
     }
 
-    /**
-     *   加载商品类别 ajax
-     * @return
-     * @throws Exception
-     */
     @RequestMapping("/combobox")
     public @ResponseBody
     List<Map<String,Object>> combobox()throws Exception{
-        System.out.println("--------++++++++++++++");
         List<Map<String,Object>> list = new ArrayList<>();
         Map<String,Object> map = new HashMap<>();
         map.put("id",1);
@@ -85,52 +59,40 @@ public class ManagerController {
     }
 
     /**
-     *
-     *  文件下载
-     * @return
-     * @throws Exception
+     *   导出Excel
      */
-    //@RequestMapping("/downlaod")
-    public ResponseEntity<byte[]> downloadGods() throws Exception{
-        String path = "";
-        File file = new File(path);
-        String fileName = new String("你好.xml".getBytes("utf-8"),"iso-8859-1");
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentDispositionFormData("attachment", fileName);
-        httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        return  new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
-                httpHeaders, HttpStatus.CREATED);
-    }
-
-
-    /**
-     *  导出商品  表格
-     */
-
-    public String export() throws Exception{
-
-        return "";
+    @RequestMapping("/downloadExcel")
+    public String downloadExcel() throws Exception{
+        System.out.println("-----------------down----------");
+            return "downexcelJXL";
     }
 
     /**
-     *  生成验证码
-     * @param response
-     * @param request
+     *  异步返回 echart 数据
      */
-    @RequestMapping(value="getGifCode",method= RequestMethod.GET)
-    public void getGifCode(HttpServletResponse response,HttpServletRequest request) {
-        try {
-            response.setHeader("Pragma", "No-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
-            response.setContentType("image/gif");
-            /**
-             * gif格式动画验证码
-             * 宽，高，位数。
-             */
+    @RequestMapping("/getData")
+    public @ResponseBody Map<String,Object> getJson() throws Exception{
 
-        }catch(Exception e){
+        Map<String,Object> map = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        list.add("衬衫");
+        list.add("羊毛衫");
+        list.add("雪纺衫");
+        list.add("裤子");
+        list.add("高跟鞋");
+        list.add("袜子");
+        map.put("categories",list);
 
-        }
+        List<Integer> list1 = new ArrayList<>();
+
+        list1.add(50);
+        list1.add(20);
+        list1.add(36);
+        list1.add(10);
+        list1.add(10);
+        list1.add(20);
+        map.put("data",list1);
+
+        return map;
     }
 }

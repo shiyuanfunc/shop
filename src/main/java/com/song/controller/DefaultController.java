@@ -19,8 +19,8 @@ public class DefaultController {
         return defaultName;
     }
 
-    /*@RequestMapping("/{f}/{ff}")
-    public String deaultCon(@PathVariable String f,@PathVariable("{ff}") String ff){
-        return f + ff;
-    }*/
+    @RequestMapping("/{f}/{ff}")
+    public String deaultCon(@PathVariable("f") String f,@PathVariable("ff") String ff){
+        return f +"/"+ ff;
+    }
 }

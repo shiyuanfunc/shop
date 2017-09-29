@@ -50,4 +50,9 @@
         </mvc:interceptor>
     </mvc:interceptors>-->
 
+    <!--   导出excel -->
+    <!--  配置beanName解析器 -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="10"/>
+
+
 </beans>
