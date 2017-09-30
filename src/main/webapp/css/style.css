@@ -57,8 +57,8 @@ a {
 }
 
 #head .banner {
-    /*background:url(../images/02.gif) no-repeat top;*/
-    background: url(../images/03.gif) no-repeat top;
+    /*background:url(/images/02.gif) no-repeat top;*/
+    background: url(/images/03.gif) no-repeat top;
     height: 82px;
     color: #FFFFFF;
 }
@@ -78,7 +78,7 @@ a {
 }
 
 #head .nav {
-    /*background:url(../images/03.gif) no-repeat;*/
+    /*background:url(/images/03.gif) no-repeat;*/
     height: 42px;
 
     line-height: 42px;
@@ -154,7 +154,7 @@ a {
 }
 
 #foot {
-    background: url(../images/10.gif) no-repeat;
+    background: url(/images/10.gif) no-repeat;
     height: 45px;
     padding-top: 10px;
 }
@@ -170,7 +170,7 @@ a {
 .userinfo {
     width: 759px;
     height: 448px;
-    background: url(../images/11.gif) no-repeat;
+    background: url(/images/11.gif) no-repeat;
     margin: 0 auto;
     padding-top: 80px;
 }
@@ -178,7 +178,7 @@ a {
 .tuihuo {
     width: 759px;
     height: 448px;
-    background: url(../images/14.gif) no-repeat;
+    background: url(/images/14.gif) no-repeat;
     margin: 0 auto;
     padding-top: 80px;
 }
@@ -216,7 +216,7 @@ a {
 
 /*cartDetails.html*/
 .cartDet {
-    background: url(../images/14.gif) no-repeat;
+    background: url(/images/14.gif) no-repeat;
     width: 759px;
     height: 721px;
     margin: 0 auto;
@@ -224,7 +224,7 @@ a {
 }
 
 .cartDet h4 {
-    background: url(../images/15.gif) no-repeat;
+    background: url(/images/15.gif) no-repeat;
     font-size: 14px;
     line-height: 32px;
     height: 32px;
@@ -233,7 +233,7 @@ a {
 }
 
 .cartDet .bg {
-    background: url(../images/16.gif) no-repeat right bottom;
+    background: url(/images/16.gif) no-repeat right bottom;
     height: 630px;
     margin: 0 10px 10px;
 }
@@ -258,14 +258,14 @@ a {
 }
 
 .cartDet .order_bg {
-    background: url(../images/17.gif) no-repeat right bottom;
+    background: url(/images/17.gif) no-repeat right bottom;
     height: 630px;
     margin: 0 10px 10px;
 }
 
 /*login.html*/
 .login_bg {
-    background: url(../images/18.gif) no-repeat;
+    background: url(/images/18.gif) no-repeat;
     width: 446px;
     height: 251px;
     margin: 118px auto;
@@ -290,7 +290,7 @@ a {
 }
 
 .main .top {
-    background: url(../images/21.gif) no-repeat top;
+    background: url(/images/21.gif) no-repeat top;
     height: 90px;
     padding-left: 260px;
 }
@@ -316,26 +316,26 @@ a {
 }
 
 .main .adm_con .bg_1 {
-    background: url(../images/28.gif) repeat-y right;
+    background: url(/images/28.gif) repeat-y right;
 }
 
 .main .adm_con .bg_2 {
-    background: url(../images/29.jpg) repeat-x bottom;
+    background: url(/images/29.jpg) repeat-x bottom;
     height: 650px;
 }
 
 .main .adm_con .bg_3 {
-    background: url(../images/27.gif) repeat-y left;
+    background: url(/images/27.gif) repeat-y left;
 }
 
 .main .adm_con h3 {
-    background: url(../images/24.gif) repeat-x;
+    background: url(/images/24.gif) repeat-x;
     height: 29px;
     font-size: 12px
 }
 
 .main .adm_con h3 span {
-    background: url(../images/26.jpg) no-repeat center;
+    background: url(/images/26.jpg) no-repeat center;
     width: 85px;
     height: 29px;
     text-align: center;

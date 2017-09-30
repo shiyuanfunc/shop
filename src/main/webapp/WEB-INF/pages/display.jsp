@@ -5,7 +5,7 @@
     <jsp:include page="/common/headEasyUI.jsp"></jsp:include>
 
 </head>
-<body>
+<body  style="background-color:#ffffff">
 <table class="easyui-datagrid" style="width:100%;height:100%"
        data-options="url:'datagrid_data.json',fitColumns:true,singleSelect:true">
     <thead>
