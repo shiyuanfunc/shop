@@ -37,6 +37,8 @@
                    style="width: 100%;background: url('/img/login_bg_2.jpg')">面试安排列表</a>
                 <a class="easyui-linkbutton" _href="view/InterviewBack" data-options="iconCls:'icon-man'"
                    style="width: 100%;background: url('/img/login_bg_2.jpg')">面试反馈</a>
+                <a class="easyui-linkbutton" _href="view/ruxianganpai" data-options="iconCls:'icon-man'"
+                   style="width: 100%;background: url('/img/login_bg_2.jpg')">入项安排</a>
             </div>
             <div title="顾客信息管理" data-options="iconCls:'icon-save',selected:true" style="padding:0px;background: url('/img/login_bg_2.jpg')">
                 <a class="easyui-linkbutton" _href="${mapp.URL}" data-options="iconCls:'icon-man'"
