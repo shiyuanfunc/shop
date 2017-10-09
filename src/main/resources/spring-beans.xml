@@ -32,6 +32,7 @@
     </context:component-scan>
     <!--导入数据库配置文件-->
     <context:property-override file-encoding="UTF-8" location="classpath:jdbc.properties"/>
+
     <!--数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"/>
     <!--SqlSessionFactory-->
